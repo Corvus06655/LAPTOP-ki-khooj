@@ -7,35 +7,62 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>Vikas ke Laptop ki khooj</header>
+    <header>Vikas ke Laptop ki Khooj</header>
+    
+    <!-- Search Section -->
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Enter a laptop name or keyword...">
+        <button onclick="searchSites()">Search</button>
+    </div>
+
     <div class="container">
-        <!-- HDHUB4U -->
+        <!-- Jio Mart -->
         <div class="movie">
-            
             <div class="details">
                 <h3>JIO MART</h3>
                 <p>A site for purchasing laptop</p>
                 <a href="https://www.jiomart.com/c/electronics/4" target="_blank">Purchase</a>
             </div>
         </div>
-        <!-- Movie 2 -->
+        <!-- Flipkart -->
         <div class="movie">
-            
             <div class="details">
-                <h3>flipkart</h3>
+                <h3>Flipkart</h3>
                 <p>A site for purchasing laptop</p>
                 <a href="https://www.flipkart.com/" target="_blank">Purchase</a>
             </div>
         </div>
+        <!-- Amazon -->
         <div class="movie">
-            
             <div class="details">
                 <h3>Amazon</h3>
                 <p>A site for purchasing laptop</p>
-                <a href="https://www.amazon.in/">Purchase</a>
+                <a href="https://www.amazon.in/" target="_blank">Purchase</a>
             </div>
         </div>
     </div>
-    <script src="scripts.js"></script>
+
+    <script>
+        // JavaScript to perform search
+        function searchSites() {
+            const query = document.getElementById('search-input').value.trim();
+            if (!query) {
+                alert("Please enter a search keyword!");
+                return;
+            }
+
+            // List of sites with their search URLs
+            const sites = [
+                { name: "Jio Mart", url: `https://www.jiomart.com/search/${query}` },
+                { name: "Flipkart", url: `https://www.flipkart.com/search?q=${query}` },
+                { name: "Amazon", url: `https://www.amazon.in/s?k=${query}` }
+            ];
+
+            // Open each search in a separate tab
+            for (let i = 0; i < sites.length; i++) {
+                window.open(sites[i].url, '_blank');
+            }
+        }
+    </script>
 </body>
 </html>
